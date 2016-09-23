@@ -4,6 +4,7 @@ var boo = ["Boo", "11435", "54000", 3];
 var scout = ["Scout", "6243", "74750", 5];
 //name, employee id, salary, rating
 
+//template for object
 function Person(employee) {
   this.name = employee[0];
   this.employeeId = employee[1];
@@ -15,6 +16,7 @@ atticus = new Person (atticus);
 jem = new Person (jem);
 boo = new Person (boo);
 scout = new Person (scout);
+//puts objects into array
 var employees = [atticus, jem, boo, scout];
 
 for (var i = 0; i < employees.length; i++){
@@ -24,18 +26,14 @@ for (var i = 0; i < employees.length; i++){
 
 function employeeReport(employee){
 
-  var employeeName = employee.name;
-  var employeeId = employee.employeeId;
-  var salary = parseInt(employee.salary);
-  var rating = employee.rating;
   var bonus = 0;
 
   var output = {};
-  output.name = employeeName;
-  bonus = calcBonus(rating, employeeId, salary);
+  output.name = employee.name;
+  bonus = calcBonus(employee.rating, employee.employeeId, employee.salary);
   output.bonus = bonus;
-  output.totalSalary = salary + (bonus * salary);
-  output.bonusAmount = Math.round(bonus * salary);
+  output.totalSalary = parseInt(employee.salary) + (bonus * parseInt(employee.salary));
+  output.bonusAmount = Math.round(bonus * parseInt(employee.salary));
 
   return output;
 }
